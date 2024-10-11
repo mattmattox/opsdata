@@ -56,16 +56,6 @@ jobs:
           go install github.com/swaggo/swag/cmd/swag@latest
           swag init -g main.go
       
-      - name: Generate code coverage
-        run: go test -coverprofile=coverage.out ./...
-
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          file: ./coverage.out
-          flags: backend
-
   Test-frontend:
     runs-on: ubuntu-latest
 
