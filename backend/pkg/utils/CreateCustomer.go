@@ -1,7 +1,7 @@
 package utils
 
 import (
-	"github.com/opsdata-io/opsdata/backend/pkg/models"
+	"github.com/nexmonyx/nexmonyx/backend/pkg/models"
 )
 
 // CreateCustomer creates a new customer in the database

@@ -6,8 +6,8 @@ import (
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/google/uuid"
-	"github.com/opsdata-io/opsdata/backend/pkg/models"
-	"github.com/opsdata-io/opsdata/backend/pkg/utils"
+	"github.com/nexmonyx/nexmonyx/backend/pkg/models"
+	"github.com/nexmonyx/nexmonyx/backend/pkg/utils"
 )
 
 // UploadFile handles uploading a file to the specified upload link

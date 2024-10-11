@@ -3,20 +3,20 @@ kind: Deployment
 metadata:
   name: supertokens
   labels:
-    app: "opsdata"
+    app: "nexmonyx"
     component: "supertokens"
     release: "{{ .Release.Name }}"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: "opsdata"
+      app: "nexmonyx"
       component: "supertokens"
       release: "{{ .Release.Name }}"
   template:
     metadata:
       labels:
-        app: "opsdata"
+        app: "nexmonyx"
         component: "supertokens"
         release: "{{ .Release.Name }}"
     spec:

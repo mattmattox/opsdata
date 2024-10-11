@@ -2,8 +2,8 @@ package handlers
 
 import (
 	"github.com/gofiber/fiber/v2"
-	"github.com/opsdata-io/opsdata/backend/pkg/models"
-	"github.com/opsdata-io/opsdata/backend/pkg/utils"
+	"github.com/nexmonyx/nexmonyx/backend/pkg/models"
+	"github.com/nexmonyx/nexmonyx/backend/pkg/utils"
 )
 
 // CreateCustomer creates a new customer in the database and returns the new customer object in JSON format

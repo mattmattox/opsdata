@@ -4,8 +4,8 @@ import (
 	"time"
 
 	"github.com/gofiber/fiber/v2"
-	"github.com/opsdata-io/opsdata/backend/pkg/models"
-	"github.com/opsdata-io/opsdata/backend/pkg/utils"
+	"github.com/nexmonyx/nexmonyx/backend/pkg/models"
+	"github.com/nexmonyx/nexmonyx/backend/pkg/utils"
 )
 
 // CreateServer creates a new server in the database and returns the new server object in JSON format

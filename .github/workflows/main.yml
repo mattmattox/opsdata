@@ -108,8 +108,8 @@ jobs:
       - name: Login to DockerHub
         uses: docker/login-action@v3
         with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          username: ${{ secrets.HARBOR_USERNAME }}
+          password: ${{ secrets.HARBOR_PASSWORD }}
 
       - name: Docker build backend
         run: |
@@ -119,9 +119,9 @@ jobs:
             --build-arg VERSION=v${{ github.run_number }} \
             --build-arg GIT_COMMIT=${{ github.sha }} \
             --build-arg BUILD_DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ") \
-            --cache-from opsdata/backend:latest \
-            -t opsdata/backend:"v${{ github.run_number }}" \
-            -t opsdata/backend:latest \
+            --cache-from harbor.support.tools/nexmonyx/backend:latest \
+            -t harbor.support.tools/nexmonyx/backend:"v${{ github.run_number }}" \
+            -t harbor.support.tools/nexmonyx/backend:latest \
             --push \
             -f Dockerfile .
 
@@ -139,8 +139,8 @@ jobs:
       - name: Login to DockerHub
         uses: docker/login-action@v3
         with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          username: ${{ secrets.HARBOR_USERNAME }}
+          password: ${{ secrets.HARBOR_PASSWORD }}
 
       - name: Docker build frontend
         run: |
@@ -148,8 +148,8 @@ jobs:
           docker buildx build \
             --platform linux/amd64 \
             --pull \
-            -t opsdata/frontend:"v${{ github.run_number }}" \
-            -t opsdata/frontend:latest \
+            -t harbor.support.tools/nexmonyx/frontend:"v${{ github.run_number }}" \
+            -t harbor.support.tools/nexmonyx/frontend:latest \
             --push \
             -f Dockerfile .
 
@@ -167,7 +167,7 @@ jobs:
         uses: azure/setup-helm@v4.2.0
 
       - name: Helm Lint
-        run: helm lint charts/opsdata/
+        run: helm lint charts/harbor.support.tools/nexmonyx/
 
       - name: Package Helm chart
         run: |
@@ -177,9 +177,9 @@ jobs:
           echo "CHART_VERSION=${CHART_VERSION}"
           echo "APP_VERSION=${APP_VERSION}"
           echo "IMAGE_TAG=${IMAGE_TAG}"
-          envsubst < charts/opsdata/Chart.yaml.template > charts/opsdata/Chart.yaml
-          envsubst < charts/opsdata/values.yaml.template > charts/opsdata/values.yaml
-          helm package charts/opsdata --destination helm/repo
+          envsubst < charts/harbor.support.tools/nexmonyx/Chart.yaml.template > charts/harbor.support.tools/nexmonyx/Chart.yaml
+          envsubst < charts/harbor.support.tools/nexmonyx/values.yaml.template > charts/harbor.support.tools/nexmonyx/values.yaml
+          helm package charts/nexmonyx --destination helm/repo
 
       - name: Checkout helm-chart repository
         uses: actions/checkout@v4
@@ -195,11 +195,11 @@ jobs:
 
       - name: Update Helm repository
         run: |
-          cp helm/repo/opsdata-*.tgz helm-chart/
+          cp helm/repo/nexmonyx-*.tgz helm-chart/
           cd helm-chart
           helm repo index . --url https://charts.support.tools
           git add .
-          git commit -m "Update Helm chart for opsdata"
+          git commit -m "Update Helm chart for nexmonyx"
           git push
 
   Deploy:
@@ -219,7 +219,7 @@ jobs:
           tar -xvf rancher-projects.tar.gz
           chmod +x rancher-projects
           mv rancher-projects /usr/local/bin/
-          rancher-projects --rancher-server ${{ secrets.CATTLE_SERVER }} --rancher-access-key ${{ secrets.CATTLE_ACCESS_KEY }} --rancher-secret-key ${{ secrets.CATTLE_SECRET_KEY }} --cluster-name a1-ops-prd --project-name "OpsData" --namespace opsdata --create-kubeconfig --kubeconfig "kubeconfig"
+          rancher-projects --rancher-server ${{ secrets.CATTLE_SERVER }} --rancher-access-key ${{ secrets.CATTLE_ACCESS_KEY }} --rancher-secret-key ${{ secrets.CATTLE_SECRET_KEY }} --cluster-name a1-ops-prd --project-name "OpsData" --namespace nexmonyx --create-kubeconfig --kubeconfig "kubeconfig"
 
       - name: Deploy Master
         run: |
@@ -230,7 +230,7 @@ jobs:
           SLEEP_TIME=10
           COUNTER=0
           while [ $COUNTER -lt $MAX_TRIES ]; do
-            HEALTH_STATUS=$(kubectl get applications.argoproj.io opsdata-mst -n argocd -o jsonpath='{.status.health.status}' --kubeconfig kubeconfig)
+            HEALTH_STATUS=$(kubectl get applications.argoproj.io nexmonyx-mst -n argocd -o jsonpath='{.status.health.status}' --kubeconfig kubeconfig)
             echo "Current health status: $HEALTH_STATUS"
             if [ "$HEALTH_STATUS" = "Healthy" ]; then
               echo "Application is healthy."
@@ -254,7 +254,7 @@ jobs:
           SLEEP_TIME=10
           COUNTER=0
           while [ $COUNTER -lt $MAX_TRIES ]; do
-            HEALTH_STATUS=$(kubectl get applications.argoproj.io opsdata-dev -n argocd -o jsonpath='{.status.health.status}' --kubeconfig kubeconfig)
+            HEALTH_STATUS=$(kubectl get applications.argoproj.io nexmonyx-dev -n argocd -o jsonpath='{.status.health.status}' --kubeconfig kubeconfig)
             echo "Current health status: $HEALTH_STATUS"
             if [ "$HEALTH_STATUS" = "Healthy" ]; then
               echo "Application is healthy."
@@ -278,7 +278,7 @@ jobs:
           SLEEP_TIME=10
           COUNTER=0
           while [ $COUNTER -lt $MAX_TRIES ]; do
-            HEALTH_STATUS=$(kubectl get applications.argoproj.io opsdata-qas -n argocd -o jsonpath='{.status.health.status}' --kubeconfig kubeconfig)
+            HEALTH_STATUS=$(kubectl get applications.argoproj.io nexmonyx-qas -n argocd -o jsonpath='{.status.health.status}' --kubeconfig kubeconfig)
             echo "Current health status: $HEALTH_STATUS"
             if [ "$HEALTH_STATUS" = "Healthy" ]; then
               echo "Application is healthy."
@@ -302,7 +302,7 @@ jobs:
           SLEEP_TIME=10
           COUNTER=0
           while [ $COUNTER -lt $MAX_TRIES ]; do
-            HEALTH_STATUS=$(kubectl get applications.argoproj.io opsdata-tst -n argocd -o jsonpath='{.status.health.status}' --kubeconfig kubeconfig)
+            HEALTH_STATUS=$(kubectl get applications.argoproj.io nexmonyx-tst -n argocd -o jsonpath='{.status.health.status}' --kubeconfig kubeconfig)
             echo "Current health status: $HEALTH_STATUS"
             if [ "$HEALTH_STATUS" = "Healthy" ]; then
               echo "Application is healthy."
@@ -326,7 +326,7 @@ jobs:
           SLEEP_TIME=10
           COUNTER=0
           while [ $COUNTER -lt $MAX_TRIES ]; do
-            HEALTH_STATUS=$(kubectl get applications.argoproj.io opsdata-stg -n argocd -o jsonpath='{.status.health.status}' --kubeconfig kubeconfig)
+            HEALTH_STATUS=$(kubectl get applications.argoproj.io nexmonyx-stg -n argocd -o jsonpath='{.status.health.status}' --kubeconfig kubeconfig)
             echo "Current health status: $HEALTH_STATUS"
             if [ "$HEALTH_STATUS" = "Healthy" ]; then
               echo "Application is healthy."
@@ -350,7 +350,7 @@ jobs:
           SLEEP_TIME=10
           COUNTER=0
           while [ $COUNTER -lt $MAX_TRIES ]; do
-            HEALTH_STATUS=$(kubectl get applications.argoproj.io opsdata-prd -n argocd -o jsonpath='{.status.health.status}' --kubeconfig kubeconfig)
+            HEALTH_STATUS=$(kubectl get applications.argoproj.io nexmonyx-prd -n argocd -o jsonpath='{.status.health.status}' --kubeconfig kubeconfig)
             echo "Current health status: $HEALTH_STATUS"
             if [ "$HEALTH_STATUS" = "Healthy" ]; then
               echo "Application is healthy."

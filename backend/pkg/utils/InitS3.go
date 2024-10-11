@@ -4,7 +4,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/credentials"
 	"github.com/aws/aws-sdk-go/aws/session"
-	"github.com/opsdata-io/opsdata/backend/pkg/config"
+	"github.com/nexmonyx/nexmonyx/backend/pkg/config"
 )
 
 var s3Session *session.Session

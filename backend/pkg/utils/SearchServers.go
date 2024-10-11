@@ -3,7 +3,7 @@ package utils
 import (
 	"strings"
 
-	"github.com/opsdata-io/opsdata/backend/pkg/models"
+	"github.com/nexmonyx/nexmonyx/backend/pkg/models"
 )
 
 // SearchServers searches for servers in the database without case sensitivity

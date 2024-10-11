@@ -3,14 +3,14 @@ kind: Deployment
 metadata:
   name: backend
   labels:
-    app: "opsdata"
+    app: "nexmonyx"
     component: "backend"
     release: "{{ .Release.Name }}"
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: "opsdata"
+      app: "nexmonyx"
       component: "backend"
       release: "{{ .Release.Name }}"
   template:
@@ -20,7 +20,7 @@ spec:
         prometheus.io/port: "9000"  # Ensure port is quoted to be interpreted as string
         prometheus.io/path: "/metrics"
       labels:
-        app: "opsdata"
+        app: "nexmonyx"
         component: "backend"
         release: "{{ .Release.Name }}"
     spec:

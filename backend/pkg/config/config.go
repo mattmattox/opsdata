@@ -7,7 +7,7 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/opsdata-io/opsdata/backend/pkg/version"
+	"github.com/nexmonyx/nexmonyx/backend/pkg/version"
 )
 
 // AppConfig structure for environment-based configurations.
@@ -47,7 +47,7 @@ func LoadConfiguration() {
 	showVersion := flag.Bool("version", false, "Show version and exit")
 	jwtSecret := getEnvOrDefault("JWT_SECRET", "secret")
 	encryptionKey := getEnvOrDefault("ENCRYPTION_KEY", "secret")
-	s3Bucket := getEnvOrDefault("S3_BUCKET", "opsdata")
+	s3Bucket := getEnvOrDefault("S3_BUCKET", "nexmonyx")
 	s3Region := getEnvOrDefault("S3_REGION", "us-east-1")
 	s3Endpoint := getEnvOrDefault("S3_ENDPOINT", "https://s3.wasabisys.com")
 	s3AccessKey := getEnvOrDefault("S3_ACCESS_KEY", "your-access-key")
@@ -57,7 +57,7 @@ func LoadConfiguration() {
 	dbPort := parseEnvInt("DB_PORT", 3306)
 	dbUser := getEnvOrDefault("DB_USER", "root")
 	dbPassword := getEnvOrDefault("DB_PASSWORD", "password")
-	dbName := getEnvOrDefault("DB_NAME", "opsdata")
+	dbName := getEnvOrDefault("DB_NAME", "nexmonyx")
 	adminEmail := getEnvOrDefault("ADMIN_EMAIL", "admin@support.tools")
 	adminPassword := getEnvOrDefault("ADMIN_PASSWORD", "password")
 	sendGridAPIKey := getEnvOrDefault("SENDGRID_API_KEY", "your-sendgrid-api-key")

@@ -1,7 +1,7 @@
 package utils
 
 import (
-	"github.com/opsdata-io/opsdata/backend/pkg/models"
+	"github.com/nexmonyx/nexmonyx/backend/pkg/models"
 )
 
 // GetCustomerByID retrieves a customer from the database by its ID

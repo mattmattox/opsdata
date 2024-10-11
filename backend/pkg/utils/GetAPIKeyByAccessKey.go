@@ -3,7 +3,7 @@
 package utils
 
 import (
-	"github.com/opsdata-io/opsdata/backend/pkg/models"
+	"github.com/nexmonyx/nexmonyx/backend/pkg/models"
 )
 
 // GetAPIKeyByAccessKey retrieves an API key from the database by its access key

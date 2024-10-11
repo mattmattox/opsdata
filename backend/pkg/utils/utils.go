@@ -1,7 +1,7 @@
 package utils
 
 import (
-	"github.com/opsdata-io/opsdata/backend/pkg/logging"
+	"github.com/nexmonyx/nexmonyx/backend/pkg/logging"
 )
 
 // SetupLogging sets up logging for the application

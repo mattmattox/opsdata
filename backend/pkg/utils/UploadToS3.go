@@ -5,7 +5,7 @@ import (
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/s3"
-	"github.com/opsdata-io/opsdata/backend/pkg/config"
+	"github.com/nexmonyx/nexmonyx/backend/pkg/config"
 )
 
 // UploadToS3 uploads a file to S3

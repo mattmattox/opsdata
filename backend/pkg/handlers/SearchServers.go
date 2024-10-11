@@ -2,7 +2,7 @@ package handlers
 
 import (
 	"github.com/gofiber/fiber/v2"
-	"github.com/opsdata-io/opsdata/backend/pkg/utils"
+	"github.com/nexmonyx/nexmonyx/backend/pkg/utils"
 )
 
 // SearchServers handles searching servers based on a query parameter in the database

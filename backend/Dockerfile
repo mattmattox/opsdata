@@ -25,8 +25,8 @@ ARG GIT_COMMIT
 ARG BUILD_DATE
 
 # Build the Go app with versioning information
-RUN GOOS=linux GOARCH=amd64 go build -ldflags "-X github.com/opsdata-io/opsdata/backend/pkg/version.Version=$VERSION -X github.com/opsdata-io/opsdata/backend/pkg/version.GitCommit=$GIT_COMMIT -X github.com/opsdata-io/opsdata/backend/pkg/version.BuildTime=$BUILD_DATE" -o /bin/opsdata
-RUN chmod +x /bin/opsdata
+RUN GOOS=linux GOARCH=amd64 go build -ldflags "-X github.com/nexmonyx/nexmonyx/backend/pkg/version.Version=$VERSION -X github.com/nexmonyx/nexmonyx/backend/pkg/version.GitCommit=$GIT_COMMIT -X github.com/nexmonyx/nexmonyx/backend/pkg/version.BuildTime=$BUILD_DATE" -o /bin/nexmonyx
+RUN chmod +x /bin/nexmonyx
 
 # Use ubuntu as the final image
 FROM ubuntu:latest
@@ -43,8 +43,8 @@ RUN apt-get update && \
 WORKDIR /root/
 
 # Copy our static executable.
-COPY --from=builder /bin/opsdata /bin/opsdata
+COPY --from=builder /bin/nexmonyx /bin/nexmonyx
 COPY --from=builder /src/docs /root/docs
 
-# Run the opsdata binary.
-ENTRYPOINT ["/bin/opsdata"]
+# Run the nexmonyx binary.
+ENTRYPOINT ["/bin/nexmonyx"]

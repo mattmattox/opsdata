@@ -4,8 +4,8 @@ import (
 	"net/http"
 
 	"github.com/gofiber/fiber/v2"
-	"github.com/opsdata-io/opsdata/backend/pkg/models"
-	"github.com/opsdata-io/opsdata/backend/pkg/utils"
+	"github.com/nexmonyx/nexmonyx/backend/pkg/models"
+	"github.com/nexmonyx/nexmonyx/backend/pkg/utils"
 )
 
 // CreateUploadLinkRequest defines the request structure for creating an upload link

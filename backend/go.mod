@@ -1,4 +1,4 @@
-module github.com/opsdata-io/opsdata/backend
+module github.com/nexmonyx/nexmonyx/backend
 
 go 1.22.2
 

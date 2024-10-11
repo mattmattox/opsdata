@@ -1,12 +1,12 @@
 apiVersion: v1
-name: opsdata
+name: nexmonyx
 version: ${CHART_VERSION}
 appVersion: ${APP_VERSION}
-description: opsdata.io
+description: nexmonyx.com
 kubeVersion: ">=1.25"
-home: https://opsdata.io
+home: https://nexmonyx.com
 sources:
-- https://github.com/opsdata-io/opsdata
+- https://github.com/nexmonyx-io/nexmonyx
 maintainers:
 - name: mattmattox
   email: mmattox@support.tools

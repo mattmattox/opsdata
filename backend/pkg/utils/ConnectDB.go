@@ -3,8 +3,8 @@ package utils
 import (
 	"fmt"
 
-	"github.com/opsdata-io/opsdata/backend/pkg/config"
-	"github.com/opsdata-io/opsdata/backend/pkg/models"
+	"github.com/nexmonyx/nexmonyx/backend/pkg/config"
+	"github.com/nexmonyx/nexmonyx/backend/pkg/models"
 	"golang.org/x/crypto/bcrypt"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"

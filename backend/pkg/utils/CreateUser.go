@@ -1,7 +1,7 @@
 package utils
 
 import (
-	"github.com/opsdata-io/opsdata/backend/pkg/models"
+	"github.com/nexmonyx/nexmonyx/backend/pkg/models"
 )
 
 // CreateUser creates a new user in the database

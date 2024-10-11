@@ -1,14 +1,14 @@
 {{/*
 Expand the name of the application.
 */}}
-{{- define "opsdata.name" -}}
+{{- define "nexmonyx.name" -}}
 {{- default .Chart.Name .Values.nameOverride -}}
 {{- end -}}
 
 {{/*
 Expand the full name of the chart.
 */}}
-{{- define "opsdata.fullname" -}}
+{{- define "nexmonyx.fullname" -}}
 {{- if .Values.fullnameOverride -}}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" -}}
 {{- else -}}
@@ -20,16 +20,16 @@ Expand the full name of the chart.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "opsdata.chart" -}}
+{{- define "nexmonyx.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
 Common labels
 */}}
-{{- define "opsdata.labels" -}}
-helm.sh/chart: {{ include "opsdata.chart" . }}
-{{ include "opsdata.selectorLabels" . }}
+{{- define "nexmonyx.labels" -}}
+helm.sh/chart: {{ include "nexmonyx.chart" . }}
+{{ include "nexmonyx.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -39,18 +39,18 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "opsdata.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "opsdata.name" . }}
+{{- define "nexmonyx.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "nexmonyx.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
 Create a default name for the ServiceAccount
 */}}
-{{- define "opsdata.serviceAccountName" -}}
+{{- define "nexmonyx.serviceAccountName" -}}
 {{- if .Values.serviceAccount.name -}}
 {{- .Values.serviceAccount.name -}}
 {{- else -}}
-{{- include "opsdata.fullname" . -}}
+{{- include "nexmonyx.fullname" . -}}
 {{- end -}}
 {{- end -}}

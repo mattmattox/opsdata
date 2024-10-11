@@ -2,7 +2,7 @@ package handlers
 
 import (
 	"github.com/gofiber/fiber/v2"
-	"github.com/opsdata-io/opsdata/backend/pkg/version"
+	"github.com/nexmonyx/nexmonyx/backend/pkg/version"
 )
 
 // GetVersion handles fetching version information

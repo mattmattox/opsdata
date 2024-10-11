@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/opsdata-io/opsdata/backend/pkg/logging"
-	"github.com/opsdata-io/opsdata/backend/pkg/version"
+	"github.com/nexmonyx/nexmonyx/backend/pkg/logging"
+	"github.com/nexmonyx/nexmonyx/backend/pkg/version"
 )
 
 var logger = logging.SetupLogging()

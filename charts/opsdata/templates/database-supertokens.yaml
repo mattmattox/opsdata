@@ -65,11 +65,11 @@ spec:
   rootPasswordSecretKeyRef:
     name: {{ $rootPasswordSecret }}
     key: password
-  username: opsdata
+  username: nexmonyx
   passwordSecretKeyRef:
     name: {{ $appPasswordSecret }}
     key: password
-  database: opsdata
+  database: nexmonyx
   storage:
     size: 8Gi
     storageClassName: harvester

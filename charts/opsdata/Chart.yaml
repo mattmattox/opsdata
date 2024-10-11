@@ -1,8 +1,8 @@
 apiVersion: v1
-name: opsdata
+name: nexmonyx
 version: 0.1.0
 appVersion: 0.1.0
-description: opsdata is a tool tunneling prometheus metrics from a kubernetes cluster to a remote exporter.
+description: nexmonyx is a tool tunneling prometheus metrics from a kubernetes cluster to a remote exporter.
 keywords:
 - kubernetes
 - monitoring

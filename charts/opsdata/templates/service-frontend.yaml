@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: frontend
   labels:
-    app: "opsdata"
+    app: "nexmonyx"
     component: "frontend"
     release: "{{ .Release.Name }}"
   annotations:
@@ -22,6 +22,6 @@ spec:
       targetPort: 9000
       protocol: TCP
   selector:
-    app: "opsdata"
+    app: "nexmonyx"
     component: "frontend"
     release: "{{ .Release.Name }}"

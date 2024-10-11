@@ -1,7 +1,7 @@
 package utils
 
 import (
-	"github.com/opsdata-io/opsdata/backend/pkg/config"
+	"github.com/nexmonyx/nexmonyx/backend/pkg/config"
 )
 
 // GetEncryptionKey returns the encryption key

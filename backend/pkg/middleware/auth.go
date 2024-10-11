@@ -5,7 +5,7 @@ import (
 
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gofiber/fiber/v2"
-	"github.com/opsdata-io/opsdata/backend/pkg/utils"
+	"github.com/nexmonyx/nexmonyx/backend/pkg/utils"
 )
 
 // AuthenticateJWTAndAPIKey is a middleware function that authenticates a JWT token or API key and sets the user to the context if successful

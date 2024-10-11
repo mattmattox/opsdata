@@ -2,13 +2,13 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: opsdata-io
+  name: nexmonyx-io
   namespace: argocd
 spec:
   clusterResourceWhitelist:
     - group: "*"
       kind: "*"
-  description: opsdata.io
+  description: nexmonyx.com
   destinations:
     - namespace: "*"
       server: "*"
@@ -18,13 +18,13 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: opsdata-dev
+  name: nexmonyx-dev
   namespace: argocd
 spec:
   destination:
-    namespace: opsdata-dev
+    namespace: nexmonyx-dev
     server: https://kubernetes.default.svc
-  project: opsdata-io
+  project: nexmonyx-io
   source:
     chart: website
     helm:
@@ -32,7 +32,7 @@ spec:
         - name: settings.debug
           value: "true"
         - name: ingress.host
-          value: dev.opsdata.io
+          value: dev.nexmonyx.com
     repoURL: https://charts.support.tools
     targetRevision: CHARTVERSION
   syncPolicy:

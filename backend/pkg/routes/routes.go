@@ -2,8 +2,8 @@ package routes
 
 import (
 	"github.com/gofiber/fiber/v2"
-	"github.com/opsdata-io/opsdata/backend/pkg/handlers"
-	"github.com/opsdata-io/opsdata/backend/pkg/middleware"
+	"github.com/nexmonyx/nexmonyx/backend/pkg/handlers"
+	"github.com/nexmonyx/nexmonyx/backend/pkg/middleware"
 
 	swagger "github.com/swaggo/fiber-swagger"
 )

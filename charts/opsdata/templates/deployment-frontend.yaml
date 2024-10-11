@@ -3,14 +3,14 @@ kind: Deployment
 metadata:
   name: frontend
   labels:
-    app: "opsdata"
+    app: "nexmonyx"
     component: "frontend"
     release: "{{ .Release.Name }}"
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: "opsdata"
+      app: "nexmonyx"
       component: "frontend"
       release: "{{ .Release.Name }}"
   template:
@@ -20,7 +20,7 @@ spec:
         prometheus.io/port: "9000"
         prometheus.io/path: "/metrics"
       labels:
-        app: "opsdata"
+        app: "nexmonyx"
         component: "frontend"
         release: "{{ .Release.Name }}"
     spec:

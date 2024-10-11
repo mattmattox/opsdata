@@ -5,8 +5,8 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/opsdata-io/opsdata/backend/pkg/config"
-	"github.com/opsdata-io/opsdata/backend/pkg/logging"
+	"github.com/nexmonyx/nexmonyx/backend/pkg/config"
+	"github.com/nexmonyx/nexmonyx/backend/pkg/logging"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 )

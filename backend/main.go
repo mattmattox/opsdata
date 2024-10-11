@@ -6,17 +6,17 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/logger"
-	"github.com/opsdata-io/opsdata/backend/pkg/config"
-	"github.com/opsdata-io/opsdata/backend/pkg/metrics"
-	"github.com/opsdata-io/opsdata/backend/pkg/routes"
-	"github.com/opsdata-io/opsdata/backend/pkg/utils"
+	"github.com/nexmonyx/nexmonyx/backend/pkg/config"
+	"github.com/nexmonyx/nexmonyx/backend/pkg/metrics"
+	"github.com/nexmonyx/nexmonyx/backend/pkg/routes"
+	"github.com/nexmonyx/nexmonyx/backend/pkg/utils"
 )
 
 func main() {
 	// Load configuration
 	config.LoadConfiguration()
 
-	fmt.Println("Starting OpsData API Server")
+	fmt.Println("Starting NexMonyx API Server")
 
 	// Initialize S3
 	if err := utils.InitS3(); err != nil {
